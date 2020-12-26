@@ -4,9 +4,9 @@ import java.util.Collection;
 import com.example.demo.model.Product;
 
 public interface ProductService {
-    public abstract void createProduct(Product product);
-    public abstract void updateProduct(String id, Product product);
-    public abstract void deleteProduct(String id);
-    public abstract Collection<Product> getProducts();
-    public abstract Product getOneProduct(String id);
+    void createProduct(Product product);
+    void updateProduct(String id, Product product);
+    void deleteProduct(String id);
+    Collection<Product> getProducts();
+    Product getOneProduct(String id);
 }

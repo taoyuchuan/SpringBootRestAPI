@@ -13,7 +13,7 @@ import com.example.demo.model.Product;
  */
 @Service
 public class ProductServiceImpl implements ProductService {
-    private static Map<String, Product> productRepo = new HashMap<>();
+    private static final Map<String, Product> productRepo = new HashMap<>();
     static {
         Product honey = new Product();
         honey.setId("1");
@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
      * PUT service.
      * Update a product.
      * @param id id for update.
-     * @param product producr information to update.
+     * @param product product information to update.
      */
     @Override
     public void updateProduct(String id, Product product) {
@@ -66,7 +66,7 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * GET service.
-     * @return All prudocts.
+     * @return All products.
      */
     @Override
     public Collection<Product> getProducts() {

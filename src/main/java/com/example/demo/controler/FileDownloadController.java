@@ -34,10 +34,10 @@ public class FileDownloadController {
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");
 
-        ResponseEntity<Object>
-                responseEntity = ResponseEntity.ok().headers(headers).contentLength(
-                file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
-
-        return responseEntity;
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(file.length())
+                .contentType(MediaType.parseMediaType("application/txt"))
+                .body(resource);
     }
 }
