@@ -3,6 +3,7 @@ package com.example.demo.controler;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.demo.exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +31,18 @@ public class ProductServiceController {
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> delete(@PathVariable("id") String id) {
+        if(!productRepo.containsKey(id)) {
+            throw new ProductNotFoundException();
+        }
         productRepo.remove(id);
         return new ResponseEntity<>("Product is deleted successsfully", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product) {
+        if(!productRepo.containsKey(id)) {
+            throw new ProductNotFoundException();
+        }
         productRepo.remove(id);
         product.setId(id);
         productRepo.put(id, product);
@@ -55,6 +62,9 @@ public class ProductServiceController {
 
     @RequestMapping(value = "/products/{id}")
     public ResponseEntity<Object> getOneProduct(@PathVariable("id") String id) {
+        if(!productRepo.containsKey(id)) {
+            throw new ProductNotFoundException();
+        }
         return new ResponseEntity<>(productRepo.get(id), HttpStatus.OK);
     }
 }
