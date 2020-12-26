@@ -5,6 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ * Controller for product not found exception.
+ */
 @ControllerAdvice
 public class ProductExceptionController {
     @ExceptionHandler(value = ProductNotFoundException.class)
