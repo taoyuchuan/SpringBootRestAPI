@@ -4,11 +4,7 @@ import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.Product;
 
@@ -49,6 +45,7 @@ public class ProductServiceController {
      * @return response message.
      */
     @RequestMapping(value = "/products", method = RequestMethod.POST)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<Object> createProduct(@RequestBody Product product) {
         productService.createProduct(product);
         return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
@@ -59,6 +56,7 @@ public class ProductServiceController {
      * @return all products.
      */
     @RequestMapping(value = "/products")
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<Object> getProduct() {
         return new ResponseEntity<>(productService.getProducts(), HttpStatus.OK);
     }
